@@ -7,7 +7,7 @@ class Accountant(
     override fun work() {
 
         while (true) {
-            print("Enter the operation code. 0 - exit, 1 - register new item.")
+            print("Enter the operation code. 0 - exit, 1 - register new item: ")
             val operation = readln().toInt()
             when (operation) {
                 0 -> break
@@ -34,6 +34,7 @@ class Accountant(
 
         val card = when (productType) {
             0 -> {
+                print("Enter the caloric:")
                 val caloric = readln().toInt()
                 FoodCard(
                     name = productName,
@@ -45,6 +46,7 @@ class Accountant(
             }
 
             1 -> {
+                print("Enter the wattage:")
                 val wattage = readln().toInt()
                 ApplianceCard(
                     name = productName,
@@ -56,6 +58,7 @@ class Accountant(
             }
 
             else -> {
+                print("Enter the size:")
                 val size = readln().toInt()
                 ShoeCard(
                     name = productName,

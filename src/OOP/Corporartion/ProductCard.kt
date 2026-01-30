@@ -8,6 +8,6 @@ open class ProductCard(
 
 
     open fun printInfo() {
-        print("Name: ${this.name}, Brand: ${this.brand}, Price: ${this.price} ")
+        print("Name: ${this.name}, Brand: ${this.brand}, Price: ${this.price}, ")
     }
 }
