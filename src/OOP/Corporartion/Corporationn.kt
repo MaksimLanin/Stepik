@@ -1,33 +1,18 @@
 package OOP.Corporartion
 
 fun main() {
-    print("Enter name: ")
-    val name = readln()
-    print("Enter brand: ")
-    val brand = readln()
-    print("Enter size: ")
-    val size = readln().toFloat()
-    print("Enter price: ")
-    val price = readln().toInt()
 
-    val productCard = ProductCard(name, brand, size, price)
-    productCard.printInfo()
-}
+    val director  = Director("Sergey", 25) // Upcast Downcast Smartcast
+    val consultant  = Consultant("Jora")
+    val assistant = Worker("Helen", 18)
+    val accountant = Accountant(name = "Helen", age = 25)
+    (assistant as Assistant).bringCoffee() // при таком преобразовании as Assistant мы должны быть точно уверены, что assistant это точно Assistant, иначе ошибка
+    (director as Director).getConsultantToWork(consultant as Consultant)
+    director.takeCoffee(assistant) // Зелененькое, Smart cast, он видит что мы привели director к Director, и срабатывает умное приведение типов
 
-class ProductCard {
-    val name: String
-    val brand: String
-    val size: Float
-    val price: Int
+    val employees = listOf<Worker>(director, consultant, accountant, )
 
-    constructor(name: String, brand: String, size: Float, price: Int){
-        this.name = name
-        this.brand = brand
-        this.size = size
-        this.price = price
-    }
-
-    fun printInfo() {
-        println("Name: ${this.name}, Brand: ${this.brand}, Size: ${this.size}, Price: ${this.price}")
+    for (i in employees){
+        i.work()// ТК мы положили все элементы в одну коллекцию, произошел Upcast теперь мы имеем доступ только к полям и методам Родительского класса!!!
     }
 }

@@ -25,7 +25,7 @@ class Monster(
     }
 }
 
-fun task(){
+ fun task2(){
     val input = readln().split(" ")
     val paws = input[0].toInt()
     val eyes = input[1].toInt()
@@ -38,5 +38,5 @@ fun task(){
 }
 
 fun main() {
-    task()
+    task2()
 }
