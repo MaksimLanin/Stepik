@@ -1,5 +1,7 @@
 package OOP.Corporartion
 
+import javax.lang.model.type.PrimitiveType
+
 class Accountant(
     name: String,
     age: Int
@@ -20,8 +22,19 @@ class Accountant(
     }
 
     fun registerNewItem() {
-        print("Enter the product type. 0 - Food, 1 - Appliance, 2 - Shoe: ")
-        val productType = readln().toInt()
+        val productTypes = ProductType.entries
+        print("Enter the product type. ")
+        for((index, type) in productTypes.withIndex()) {
+            print("$index - ${type.title}")
+            if(index< productTypes.size - 1) {
+                print(", ")
+            } else{
+                print(": ")
+            }
+        }
+        //print("Enter the product type. ${productTypes[0].title} - Food, ${productTypes[1].title} - Appliance, ${productTypes[2].title} - Shoe: ")
+        val productTypeIndex = readln().toInt()
+        val productType = productTypes[productTypeIndex]
 
         print("Enter product name: ")
         val productName = readln()
@@ -33,7 +46,8 @@ class Accountant(
         val productPrice = readln().toInt()
 
         val card = when (productType) {
-            0 -> {
+
+            ProductType.FOOD -> {
                 print("Enter the caloric:")
                 val caloric = readln().toInt()
                 FoodCard(
@@ -42,10 +56,8 @@ class Accountant(
                     price = productPrice,
                     caloric = caloric
                 )
-
             }
-
-            1 -> {
+            ProductType.APPLIANCE -> {
                 print("Enter the wattage:")
                 val wattage = readln().toInt()
                 ApplianceCard(
@@ -54,10 +66,8 @@ class Accountant(
                     price = productPrice,
                     wattage = wattage
                 )
-
             }
-
-            else -> {
+            ProductType.SHOE -> {
                 print("Enter the size:")
                 val size = readln().toInt()
                 ShoeCard(
@@ -66,7 +76,6 @@ class Accountant(
                     price = productPrice,
                     size = size
                 )
-
             }
         }
         card.printInfo()
