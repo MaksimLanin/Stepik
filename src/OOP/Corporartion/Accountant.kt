@@ -9,18 +9,20 @@ class Accountant(
     val cards = mutableListOf<ProductCard>()
     val items = mutableListOf<ProductCard>()
     val file = File("product_cards.txt")
+    val workerFile = File("worker_file.txt")
 
     override fun work() {
         val operationCodes = OperationCode.entries
         while (true) {
 
-            print("Enter the operation code. ")
+
             for ((index, code) in operationCodes.withIndex()) {
                 print("$index - ${code.title}")
-                if (index < operationCodes.size - 1) print(", ")
-                else print(": ")
+                if (index < operationCodes.size - 1) println(", ")
+                else println(". ")
 
             }
+            print("Enter the operation code: ")
             val operationIndex = readln().toInt()
             val operationCode = operationCodes[operationIndex]
             when (operationCode) {
@@ -28,10 +30,15 @@ class Accountant(
                 OperationCode.EXIT -> break
                 OperationCode.REGISTER_NEW_ITEM -> registerNewItem()
                 OperationCode.SHOW_ALL_ITEMS -> shawAllItems()
-                OperationCode.REMOVE_PRODUCT_CARD -> TODO()
+                OperationCode.REMOVE_PRODUCT_CARD -> removeProductCard()
+                OperationCode.REGISTER_NEW_WORKER -> registerNewWorker()
+                OperationCode.REMOVE_WORKER -> TODO()
+                OperationCode.SHAW_ALL_WORKER -> TODO()
             }
         }
     }
+
+
 
     fun removeProductCard() {
         val cards = loadAllCadrs()
@@ -136,6 +143,33 @@ class Accountant(
         }
 
         file.appendText("$productCard\n")
+    }
+
+    fun registerNewWorker(){
+        val workerTypes = WorkerType.entries
+        for ((index, type) in workerTypes.withIndex()){
+            print(("$index - ${type.title}"))
+            if (index < workerTypes.size - 1) print(", ")
+            else print(": ")
+        }
+
+        val workerTypeIndex = readln().toInt()
+        val workerType = workerTypes[workerTypeIndex]
+
+        print("Enter id: ")
+        val workerId = readln()
+        workerFile.appendText("$workerId%")
+
+        print("Enter name: ")
+        val workerName = readln()
+        workerFile.appendText("$workerName%")
+
+        print("Enter age: ")
+        val workerAge = readln().toInt()
+        workerFile.appendText("$workerAge%")
+
+        workerFile.appendText("$workerType\n")
+
     }
 
     fun registerNewItem() {
