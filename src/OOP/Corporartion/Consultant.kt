@@ -3,21 +3,22 @@ package OOP.Corporartion
 import kotlin.random.Random
 
 class Consultant(
+    id: Int,
     name: String,
     age: Int = 0
-): Worker(name = name, age = age){
-    fun serveCustomers(): Int{
+) : Worker(id, name = name, age = age, Position.CONSULTANT) {
+    fun serveCustomers(): Int {
         val count = Random.nextInt(0, 100)
-        repeat(count){
+        repeat(count) {
             println("The customer is sereved...")
         }
         println()
         return count
     }
 
-    fun sayHello(){
+    fun sayHello() {
         println("Hello! My name is $name")
-        if (age > 0){
+        if (age > 0) {
             println("im $age years old. \n")
         }
     }

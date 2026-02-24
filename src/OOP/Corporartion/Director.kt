@@ -1,9 +1,10 @@
 package OOP.Corporartion
 
 class Director(
+    id: Int,
     name: String,
     age: Int
-) : Worker(name = name, age = age){
+) : Worker(id = id, name = name, age = age, Position.DIRECTOR){
     fun takeCoffee(assistant: Assistant) {
         val drinkName: String = assistant.bringCoffee()
         println("Thank you ${assistant.name}! The $drinkName is so tasty")

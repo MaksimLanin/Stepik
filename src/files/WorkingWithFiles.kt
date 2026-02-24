@@ -6,7 +6,7 @@ fun main() {
     val file = File("test.txt")
     val operationCodes = OperationCode.entries
     while (true) {
-        //file.appendText("$item\n") // Добавление текста в файл, если нам надо переписать файл то есть метод writeText()
+        //fileProductCards.appendText("$item\n") // Добавление текста в файл, если нам надо переписать файл то есть метод writeText()
         print("Enter operation code: ")
         for ((index, title) in operationCodes.withIndex()) {
             print("$index - ${title.title}")

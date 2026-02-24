@@ -1,9 +1,10 @@
 package OOP.Corporartion
 
 class Assistant(
+    id: Int,
     name: String,
     age: Int
-) : Worker(name = name, age = age) {
+) : Worker(id, name = name, age = age, Position.ASSISTANT) {
     fun bringCoffee(brinkName: String = "Cappuccino", count: Int = 1): String {
         repeat(count) {
             println("Get up")
